@@ -3,16 +3,6 @@
 
 osname="$(uname -s)"
 
-if [ $osname=Darwin ]; then
-  installformac
-  finished
-fi
-
-if [ $osname=Linux ]; then
-  installforlinux
-  finished
-fi
-
 function installformac() {
   wget --output-document=/tmp/ffmpeg.zip http://lame1.buanzo.com.ar/FFmpeg_v0.6.2_for_Audacity_on_OSX.zip
   unzip /tmp/ffmpeg.zip -d /tmp
@@ -42,3 +32,15 @@ function finished() {
   echo finis!
   echo
 }
+
+if [ $osname=Darwin ]; then
+  installformac
+  finished
+fi
+
+if [ $osname=Linux ]; then
+  installforlinux
+  finished
+fi
+
+
