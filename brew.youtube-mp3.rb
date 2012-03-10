@@ -6,5 +6,5 @@ class BrewYoutubeMp3 < Formula
   md5 '0b631b4fa33cc1e104665ba1871232f8'
 
   depends_on 'ffmpeg'
-  depends_on 'youtubeDL'
+  depends_on 'youtube-dl'
 end
