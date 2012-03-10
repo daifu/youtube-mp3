@@ -5,6 +5,5 @@ class youtube-mp3 < Formula
   homepage 'http://dejay.github.com/'
 
   depends_on 'ffmpeg'
-  depends_on 'wget'
   depends_on 'youtube-dl'
 end
