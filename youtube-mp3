@@ -17,12 +17,19 @@ if [[ $return_code -eq 0 ]]; then
 		if [ -e $video_id.mp4 ]; then
 			ext="mp4"
 		fi
+		
+		if [ "$(uname -s)" != "Darwin" ]; then
+		   ffmpeg -i $video_id.$ext "$video_title".wav
+      	   lame "$video_title".wav "$video_title".mp3
+		   rm $video_id.$ext "$video_title".wav
+         elif [ "$(uname -s)" = "Darwin" ]; then
+            ffmpeg -i $video_id.$ext "$video_title".mp3
+            rm $video_id.$ext 
+         fi
+echo
+echo Your MP3 file is ready.
 
-		ffmpeg -i $video_id.$ext "$video_title".mp3
-		rm $video_id.$ext 
-
-	    echo Your MP3 file is ready.
-	else
+else
 		Sorry but the system encountered a problem. Please check your YouTube address and try again later
 	fi
 fi
