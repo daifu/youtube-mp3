@@ -1,5 +1,5 @@
 ###youtube-mp3
-`youtube-mp3` is a fork of youtube2mp3.
+`youtube-mp3` is a fork of [youtube2mp3](https://github.com/emres/youtube2mp3).
 
 Enter a video URL when prompted and `youtube-mp3` will automatically extract an mp3 into the working directory.
 
