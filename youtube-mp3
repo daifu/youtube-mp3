@@ -31,6 +31,6 @@ if [[ $return_code -eq 0 ]]; then
 		echo Your MP3 file is ready.
 
 	else
-		Sorry but the system encountered a problem. Please check your YouTube address and try again later
+		echo Sorry but the system encountered a problem. Please check your YouTube address and try again later
 	fi
 fi
