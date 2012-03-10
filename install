@@ -14,7 +14,7 @@ sudo mv ffmpeg /usr/local/bin
 sudo mv libavcodec.52.dylib /usr/local/bin/libavcodec.dylib
 sudo mv libavformat.52.dylib /usr/local/bin/libavformat.dylib
 sudo mv libavutil.50.dylib /usr/local/bin/libavutil.dylib
-sudo mv libswscale.0.dylib /usr/local.bin/libswscale.dylib
+sudo mv libswscale.0.dylib /usr/local/bin/libswscale.dylib
 
 sudo rm -rf /tmp/ffmpeg.zip
 sudo rm -rf /tmp/FFmpeg_*
