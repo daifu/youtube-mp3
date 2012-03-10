@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -r -p "Enter YouTube address: " address
+return_code=$?
+regex='v=(.*)'
+if [[ $return_code -eq 0 ]]; then
+	if [[ $address =~ $regex ]]; then
+		video_id=${BASH_REMATCH[1]}
+		video_id=$(echo $video_id | cut -d'&' -f1)
+		video_title="$(youtube-dl --get-title $address)"
+		youtube-dl $address
+
+		if [ -e $video_id.flv ]; then
+			ext="flv"
+		fi
+
+		if [ -e $video_id.mp4 ]; then
+			ext="mp4"
+		fi
+
+		ffmpeg -i $video_id.$ext "$video_title".mp3
+		rm $video_id.$ext 
+
+	    echo Your MP3 file is ready.
+	else
+		Sorry but the system encountered a problem. Please check your YouTube address and try again later
+	fi
+fi
