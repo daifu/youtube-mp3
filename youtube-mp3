@@ -1,6 +1,9 @@
 #!/bin/bash
 
-read -r -p "Enter YouTube address: " address
+address=$1
+if [[ $address -eq 0 ]]; then
+  read -r -p "Enter YouTube address: " address
+fi
 return_code=$?
 regex='v=(.*)'
 if [[ $return_code -eq 0 ]]; then
