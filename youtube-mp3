@@ -2,6 +2,8 @@
 
 address=$1
 if [[ $address ]]; then
+  echo "Start..."
+else
   read -r -p "Enter YouTube address: " address
 fi
 return_code=$?
