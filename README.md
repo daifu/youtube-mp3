@@ -6,6 +6,9 @@
 Enter a video URL when prompted and `youtube-mp3` will automatically extract an mp3 into the working directory.
 
 ######Install
+For mac, it requires brew to install FFmpeg, to install brew, please
+visit: http://brew.sh/
+
 Run the `install` shell script to install. Everything is installed into `/usr/local/bin`. Sudo access is needed.
 
 ######Usage:
