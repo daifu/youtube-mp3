@@ -31,9 +31,9 @@ if [[ $return_code -eq 0 ]]; then
     fi
 
     if [ "$(uname -s)" != "Darwin" ]; then
-      ffmpeg -i "$video_temp_name".$ext "$video_title".wav
+      ffmpeg -i "$video_temp_name"."$ext" "$video_title".wav
       lame "$video_title".wav "$video_title".mp3
-      rm "$video_temp_name".$ext "$video_title".wav
+      rm "$video_temp_name"."$ext" "$video_title".wav
     elif [ "$(uname -s)" = "Darwin" ]; then
       ffmpeg -i "$video_temp_name"."$ext" "$video_title".mp3
       rm "$video_temp_name"."$ext"
