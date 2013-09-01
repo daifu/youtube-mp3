@@ -9,37 +9,40 @@ fi
 return_code=$?
 regex='v=(.*)'
 if [[ $return_code -eq 0 ]]; then
-	if [[ $address =~ $regex ]]; then
-		video_id=${BASH_REMATCH[1]}
-		video_id=$(echo $video_id | cut -d'&' -f1)
-		video_title="$(youtube-dl --get-title $address)"
-		youtube-dl $address
+  if [[ $address =~ $regex ]]; then
+    video_id=${BASH_REMATCH[1]}
+    video_id=$(echo $video_id | cut -d'&' -f1)
+    video_title="$(youtube-dl --get-title $address)"
+    video_temp_name="$video_title-$video_id"
 
-		if [ -e $video_id.flv ]; then
-			ext="flv"
-		fi
+    #download the video
+    youtube-dl $address
 
-		if [ -e $video_id.mp4 ]; then
-			ext="mp4"
-		fi
-		
-    if [ -e $video_id.webm ]; then
-			ext="webm"
-		fi
-		
-		if [ "$(uname -s)" != "Darwin" ]; then
-			ffmpeg -i $video_id.$ext "$video_title".wav
-			lame "$video_title".wav "$video_title".mp3
-			rm $video_id.$ext "$video_title".wav
-		elif [ "$(uname -s)" = "Darwin" ]; then
-			ffmpeg -i $video_id.$ext "$video_title".mp3
-			rm $video_id.$ext
-		fi
+    if [ -e "$video_temp_name".flv ]; then
+      ext="flv"
+    fi
 
-		echo
-		echo Your MP3 file is ready.
+    if [ -e "$video_temp_name".mp4 ]; then
+      ext="mp4"
+    fi
 
-	else
-		echo Sorry but the system encountered a problem. Please check your YouTube address and try again later
-	fi
+    if [ -e "$video_temp_name".webm ]; then
+      ext="webm"
+    fi
+
+    if [ "$(uname -s)" != "Darwin" ]; then
+      ffmpeg -i "$video_temp_name".$ext "$video_title".wav
+      lame "$video_title".wav "$video_title".mp3
+      rm "$video_temp_name".$ext "$video_title".wav
+    elif [ "$(uname -s)" = "Darwin" ]; then
+      ffmpeg -i "$video_temp_name"."$ext" "$video_title".mp3
+      rm "$video_temp_name"."$ext"
+    fi
+
+    echo
+    echo Your MP3 file is ready.
+
+  else
+    echo Sorry but the system encountered a problem. Please check your YouTube address and try again later
+  fi
 fi

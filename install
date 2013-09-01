@@ -2,31 +2,28 @@
 #youtube-mp3 install script
 
 function installformac() {
-  curl --output /tmp/ffmpeg.zip http://lame1.buanzo.com.ar/FFmpeg_v0.6.2_for_Audacity_on_OSX.zip
-  unzip /tmp/ffmpeg.zip -d /tmp
-  cd /tmp/FFmpeg_*
-  sudo mv ffmpeg /usr/local/bin
+  brew install ffmpeg # use brew install
   sudo mv libavcodec.52.dylib /usr/local/bin/libavcodec.dylib
   sudo mv libavformat.52.dylib /usr/local/bin/libavformat.dylib
   sudo mv libavutil.50.dylib /usr/local/bin/libavutil.dylib
   sudo mv libswscale.0.dylib /usr/local/bin/libswscale.dylib
   sudo rm -rf /tmp/ffmpeg.zip
   sudo rm -rf /tmp/FFmpeg_*
-  sudo curl --output /usr/local/bin/youtube-dl https://raw.github.com/rg3/youtube-dl/master/youtube-dl
+  sudo cp ./youtube-dl-8-30 /usr/local/bin/youtube-dl
   sudo curl --output /usr/local/bin/youtube-mp3 https://raw.github.com/dejay/youtube-mp3/master/youtube-mp3
   sudo chmod a+x /usr/local/bin/youtube-dl
   sudo chmod a+x /usr/local/bin/youtube-mp3
 }
 
 function installforlinux() {
-  sudo wget --output-document=/usr/local/bin/youtube-dl https://raw.github.com/rg3/youtube-dl/master/youtube-dl
+  sudo cp ./youtube-dl-8-31 --output-document=/usr/local/bin/youtube-dl
   sudo wget --output-document=/usr/local/bin/youtube-mp3 https://raw.github.com/dejay/youtube-mp3/master/youtube-mp3
   sudo chmod a+x /usr/local/bin/youtube-dl
   sudo chmod a+x /usr/local/bin/youtube-mp3
 }
 
 function finished() {
-  echo 
+  echo
   echo finis!
   echo
 }
