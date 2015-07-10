@@ -17,7 +17,7 @@ function installformac() {
 
 function installforlinux() {
   sudo cp ./youtube-dl-8-31 --output-document=/usr/local/bin/youtube-dl
-  sudo wget --output-document=/usr/local/bin/youtube-mp3 https://raw.github.com/dejay/youtube-mp3/master/youtube-mp3
+  sudo wget --output-document=/usr/local/bin/youtube-mp3 https://raw.github.com/daifu/youtube-mp3/master/youtube-mp3
   sudo chmod a+x /usr/local/bin/youtube-dl
   sudo chmod a+x /usr/local/bin/youtube-mp3
 }
